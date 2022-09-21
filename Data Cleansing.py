@@ -3,12 +3,7 @@
 
 # In[1]:
 
-
-import pandas as pd
-import numpy as np
-import csv
-
-file = 'Drivers-Report(Sep-20-2022)'
+file = 'Drivers-Report(Jun-25-2022)'
 
 hfile = open(r"C:\\Users\diego\\Documents\\TWEN\Netradyne Source Data\\" + file + '.csv')
 rfile = open(r"C:\\Users\diego\\Documents\\TWEN\Netradyne Source Data\\"+ file + '.csv')
@@ -17,23 +12,19 @@ hcsvreader = csv.reader(hfile)
 rcsvreader = csv.reader(rfile)
 
 header = []
-for line in range(11):
+for line in range(10):
     header = next(hcsvreader)
 
 rows = []
 for row in rcsvreader:
     rows.append(row)
 
-Date = rows[3]
+Date = rows[2]
 Date = Date[2]
 Date = Date.split()
 Date = Date[0]
-
-rows1 = []
-for row in hcsvreader:
-    rows1.append(row)
     
-data = rows[11:]
+data = rows[10:]
 
 header = np.array(header)
 df = pd.DataFrame(data)
@@ -50,5 +41,6 @@ final_cols = ['Driver Name', 'Date', 'Minutes Analyzed', 'Driver Score', 'Driver
        'Seatbelt Compliance', 'Camera Obstruction', 'Weaving',
        'Requested Video', 'Total Events']
 df = df[final_cols]
-df.to_csv(r'C:\Users\diego\Documents\TWEN\Netradyne Source Data\c_netradyne.csv')
+
+df.to_csv(r"C:\\Users\\diego\\Documents\\TWEN\\Netradyne Source Data\\c_" + file + '.csv')
 
