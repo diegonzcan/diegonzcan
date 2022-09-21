@@ -8,8 +8,10 @@ import pandas as pd
 import numpy as np
 import csv
 
-hfile = open(r'C:\Users\diego\Documents\TWEN\Netradyne Source Data\Drivers-Report(Sep-20-2022).csv')
-rfile = open(r'C:\Users\diego\Documents\TWEN\Netradyne Source Data\Drivers-Report(Sep-20-2022).csv')
+file = 'Drivers-Report(Sep-20-2022)'
+
+hfile = open(r"C:\\Users\diego\\Documents\\TWEN\Netradyne Source Data\\" + file + '.csv')
+rfile = open(r"C:\\Users\diego\\Documents\\TWEN\Netradyne Source Data\\"+ file + '.csv')
 
 hcsvreader = csv.reader(hfile)
 rcsvreader = csv.reader(rfile)
@@ -21,7 +23,6 @@ for line in range(11):
 rows = []
 for row in rcsvreader:
     rows.append(row)
-rows[1:5]   
 
 Date = rows[3]
 Date = Date[2]
