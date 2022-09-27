@@ -2,9 +2,11 @@
 # coding: utf-8
 
 # In[1]:
+import pandas as pd
+import numpy as np
+import csv
 
-file = 'Drivers-Report(Jun-25-2022)'
-
+file = "Drivers-Report(Sep-27-2022)"
 hfile = open(r"C:\\Users\diego\\Documents\\TWEN\Netradyne Source Data\\" + file + '.csv')
 rfile = open(r"C:\\Users\diego\\Documents\\TWEN\Netradyne Source Data\\"+ file + '.csv')
 
@@ -42,5 +44,8 @@ final_cols = ['Driver Name', 'Date', 'Minutes Analyzed', 'Driver Score', 'Driver
        'Requested Video', 'Total Events']
 df = df[final_cols]
 
-df.to_csv(r"C:\\Users\\diego\\Documents\\TWEN\\Netradyne Source Data\\c_" + file + '.csv')
+for i in df.columns[3:].values:
+    df.loc[(df[i] == "NA",[i])] = 0
 
+
+df.to_csv(r"C:\\Users\\diego\\Documents\\TWEN\\Netradyne Source Data\\c_" + file +'.csv')
